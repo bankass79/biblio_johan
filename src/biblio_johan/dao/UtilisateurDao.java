@@ -20,6 +20,7 @@ public class UtilisateurDao {
 				new Employe(Employe.Categorie.BIBLIOTHECAIRE, 
 						2, "glmsdkjg", "Johan", "0795439453",
 						"Johan", "Baskovec", "M", new Date(42))
+				
 		};
 	}
 	

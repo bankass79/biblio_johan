@@ -63,4 +63,12 @@ public class Personne {
 		result = 31 * result + (dateNaissance != null ? dateNaissance.hashCode() : 0);
 		return result;
 	}
+
+	@Override
+	public String toString() {
+		return "Personne [nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe
+				+ ", dateNaissance=" + dateNaissance + "]";
+	}
+	
+	
 }

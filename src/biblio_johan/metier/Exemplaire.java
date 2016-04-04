@@ -45,12 +45,22 @@ public class Exemplaire {
 	}
 	public void setEmpruntEnCours(EmpruntEnCours empruntEnCours) {
 		this.empruntEnCours = empruntEnCours;
+		if (empruntEnCours != null) {
+			this.status = Status.PRETE;
+		}
 	}
 	public ArrayList<EmpruntArchive> getEmpruntsArchives() {
 		return empruntsArchives;
 	}
 	public void setEmpruntsArchives(ArrayList<EmpruntArchive> empruntsArchives) {
 		this.empruntsArchives = empruntsArchives;
+	}
+	@Override
+	public String toString() {
+		return "Exemplaire [idExemplaire=" + idExemplaire + ", livre=" + livre
+				+ ", dateAchat=" + dateAchat + ", status=" + status
+				+ ", empruntsArchives="
+				+ empruntsArchives + "]";
 	}
 	
 

@@ -22,5 +22,11 @@ public class EmpruntArchive {
 	public void setDateEmprunt(Date dateEmprunt) {
 		this.dateEmprunt = dateEmprunt;
 	}
+	@Override
+	public String toString() {
+		return "EmpruntArchive [dateRestitution=" + dateRestitution
+				+ ", dateEmprunt=" + dateEmprunt + "]";
+	}
+	
 	
 }

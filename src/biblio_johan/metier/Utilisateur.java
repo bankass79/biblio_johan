@@ -25,8 +25,15 @@ public abstract class Utilisateur extends Personne {
 	
 	abstract public boolean isConditionPretAcceptees();
 	
-	public void addEmpruntEnCours(EmpruntEnCours ep) {
+	public void addEmpruntEnCours(EmpruntEnCours ep) throws BiblioException {
+		if (!isConditionPretAcceptees()) {
+			throw new BiblioException("L'utilisateur ne peut pas emprunter de livre!");
+		}
 		empruntsEnCours.add(ep);
+	}
+	
+	public void retirerEmpruntEnCours(EmpruntEnCours ep) {
+		empruntsEnCours.remove(ep);
 	}
 	
 	public ArrayList<EmpruntEnCours> getEmpruntEnCours() {
@@ -88,4 +95,14 @@ public abstract class Utilisateur extends Personne {
 		result = 31 * result + (empruntsArchive != null ? empruntsArchive.hashCode() : 0);
 		return result;
 	}
+
+	@Override
+	public String toString() {
+		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", pwd=" + pwd
+				+ ", pseudonyme=" + pseudonyme + ", empruntsEnCours="
+				+ empruntsEnCours + ", empruntsArchive=" + empruntsArchive
+				+ "]";
+	}
+	
+	
 }

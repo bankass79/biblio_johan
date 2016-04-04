@@ -52,4 +52,12 @@ public class Employe  extends Utilisateur {
 		result = 31 * result + (matricule != null ? matricule.hashCode() : 0);
 		return result;
 	}
+
+	@Override
+	public String toString() {
+		return "Employe [categorie=" + categorie + ", matricule=" + matricule
+				+ "]";
+	}
+	
+	
 }

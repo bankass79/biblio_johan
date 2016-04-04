@@ -16,5 +16,10 @@ public class Annee {
 		}
 		this.annee = annee;
 	}
+	@Override
+	public String toString() {
+		return "Annee [annee=" + annee + "]";
+	}
+	
 	
 }

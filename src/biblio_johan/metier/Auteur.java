@@ -9,4 +9,9 @@ public class Auteur extends Personne {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
+	public String toString() {
+		return "Auteur []";
+	}
+
 }

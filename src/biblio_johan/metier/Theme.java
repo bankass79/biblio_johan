@@ -15,5 +15,12 @@ public class Theme {
 	public void addSousTheme(Theme sousTheme) {
 		sousTheme.addSousTheme(sousTheme);
 	}
+
+	@Override
+	public String toString() {
+		return "Theme [code=" + code + ", libelle=" + libelle + ", sousThemes="
+				+ sousThemes + "]";
+	}
+	
 	
 }

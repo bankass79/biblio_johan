@@ -32,7 +32,16 @@ public class Adherent extends Utilisateur {
 		}
 		return nbRetards;
 	}
-
+	
+ 
+	public void emprunter (Livre livre){
+		livre.setEmpruntable (false);
+	}
+	// retirer le livre de la collection des livres empruntés par l'adhérent
+	public void rendre (Livre livre){
+	 livre.setEmpruntable (true);
+	 
+ }
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -51,4 +60,11 @@ public class Adherent extends Utilisateur {
 		result = 31 * result + (ntelephone != null ? ntelephone.hashCode() : 0);
 		return result;
 	}
+
+	@Override
+	public String toString() {
+		return "Adherent [ntelephone=" + ntelephone + "]";
+	}
+	
+	
 }
