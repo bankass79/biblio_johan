@@ -48,4 +48,8 @@ Temporary Items
 RemoteSystemsTempFiles
 .metadata
 bin
+<<<<<<< HEAD
 .recommenders
+=======
+.idea
+>>>>>>> origin/master

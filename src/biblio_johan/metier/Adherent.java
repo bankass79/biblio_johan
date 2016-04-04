@@ -9,9 +9,13 @@ public class Adherent extends Utilisateur {
 	static long dureeMaxPretsMilliseconds = 15 * 24 * 60 * 60 * 1000;
 	
 	public Adherent(int idUtilisateur, String pwd, String pseudonyme,
-			String ntelephone) {
-		super(idUtilisateur, pwd, pseudonyme);
+			String ntelephone, String nom, String prenom, String sexe, Date dateNaissance) {
+		super(idUtilisateur, pwd, pseudonyme, nom, prenom, sexe, dateNaissance);
 		this.ntelephone = ntelephone;
+	}
+
+	public Adherent() {
+		super();
 	}
 	
 	public boolean isConditionPretAcceptees() {
@@ -29,4 +33,22 @@ public class Adherent extends Utilisateur {
 		return nbRetards;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+
+		Adherent adherent = (Adherent) o;
+
+		return ntelephone != null ? ntelephone.equals(adherent.ntelephone) : adherent.ntelephone == null;
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = super.hashCode();
+		result = 31 * result + (ntelephone != null ? ntelephone.hashCode() : 0);
+		return result;
+	}
 }
