@@ -5,6 +5,10 @@ import java.util.Date;
 public class Personne {
 	 protected  String nom, prenom, sexe;
 	 protected Date dateNaissance;
+	public Personne() {
+
+	}
+
 	public Personne(String nom, String prenom, String sexe, Date dateNaissance) {
 		super();
 		this.nom = nom;
@@ -36,5 +40,27 @@ public class Personne {
 	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
-	 
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Personne personne = (Personne) o;
+
+		if (nom != null ? !nom.equals(personne.nom) : personne.nom != null) return false;
+		if (prenom != null ? !prenom.equals(personne.prenom) : personne.prenom != null) return false;
+		if (sexe != null ? !sexe.equals(personne.sexe) : personne.sexe != null) return false;
+		return dateNaissance != null ? dateNaissance.equals(personne.dateNaissance) : personne.dateNaissance == null;
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = nom != null ? nom.hashCode() : 0;
+		result = 31 * result + (prenom != null ? prenom.hashCode() : 0);
+		result = 31 * result + (sexe != null ? sexe.hashCode() : 0);
+		result = 31 * result + (dateNaissance != null ? dateNaissance.hashCode() : 0);
+		return result;
+	}
 }
