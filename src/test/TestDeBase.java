@@ -14,7 +14,7 @@ public class TestDeBase {
 	static public void main(String [] args){
 		ExemplaireDao exemplairedao =  new ExemplaireDao();
 		Exemplaire ex1 = exemplairedao.findByKey(1); 
-		Exemplaire ex2 = exemplairedao.findByKey(2);
+		Exemplaire ex2 = exemplairedao.findByKey(3);
 		
 		UtilisateurDao utilisateurDao = new UtilisateurDao();
 		Adherent ad1 = (Adherent) utilisateurDao.findByKey(1);

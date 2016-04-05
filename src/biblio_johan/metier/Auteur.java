@@ -11,7 +11,11 @@ public class Auteur extends Personne {
 
 	@Override
 	public String toString() {
-		return "Auteur []";
+		return "Auteur [nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe
+				+ ", dateNaissance=" + dateNaissance + "]";
 	}
+
+
+
 
 }

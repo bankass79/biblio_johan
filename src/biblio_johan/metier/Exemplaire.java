@@ -9,7 +9,6 @@ public class Exemplaire {
 	private Date dateAchat;
 	private Status status;
 	private EmpruntEnCours empruntEnCours;
-	private ArrayList<EmpruntArchive> empruntsArchives;
 	public enum Status { PRETE, DISPONIBLE, SUPPRIME }
 	public Exemplaire(int idExemplaire,
 			Livre livre,
@@ -17,7 +16,6 @@ public class Exemplaire {
 			Status status) {
 		super();
 		this.livre = livre;
-		this.empruntsArchives = new ArrayList<>();
 		this.idExemplaire = idExemplaire;
 		this.dateAchat = dateAchat;
 		this.status = status;
@@ -43,24 +41,25 @@ public class Exemplaire {
 	public EmpruntEnCours getEmpruntEnCours() {
 		return empruntEnCours;
 	}
+	
+	
 	public void setEmpruntEnCours(EmpruntEnCours empruntEnCours) {
-		this.empruntEnCours = empruntEnCours;
+		
 		if (empruntEnCours != null) {
 			this.status = Status.PRETE;
 		}
+		else {
+			this.empruntEnCours.getUtilisateur().retirerEmpruntEnCours(this.empruntEnCours);
+			EmpruntArchive.addEmpruntArchive(new Date(), this.empruntEnCours.getDateEmprunt());
+			this.status= Status.DISPONIBLE;
+		}
+		this.empruntEnCours = empruntEnCours;
 	}
-	public ArrayList<EmpruntArchive> getEmpruntsArchives() {
-		return empruntsArchives;
-	}
-	public void setEmpruntsArchives(ArrayList<EmpruntArchive> empruntsArchives) {
-		this.empruntsArchives = empruntsArchives;
-	}
+
 	@Override
 	public String toString() {
 		return "Exemplaire [idExemplaire=" + idExemplaire + ", livre=" + livre
-				+ ", dateAchat=" + dateAchat + ", status=" + status
-				+ ", empruntsArchives="
-				+ empruntsArchives + "]";
+				+ ", dateAchat=" + dateAchat + ", status=" + status;
 	}
 	
 

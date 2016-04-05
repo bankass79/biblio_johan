@@ -9,7 +9,7 @@ public class Livre {
 	Integer nbPages;
 	Theme theme;
 	ArrayList<Auteur> auteurs;
-	private boolean empruntable;
+	
 	
 	
 	public Livre(String isbn, String titre, 
@@ -83,33 +83,18 @@ public class Livre {
 
 
 
-	/*@Override
+	@Override
 	public String toString() {
 		return "Livre [isbn=" + isbn + ", titre=" + titre + ", anneeParution="
 				+ anneeParution + ", nbPages=" + nbPages + ", theme=" + theme
 				+ ", auteurs=" + auteurs + "]";
 	}
-*/
 
 
-	public void setEmpruntable(boolean  empruntable) {
-		this.empruntable= empruntable;
-		//super.setEmpruntable (empruntable);
-	}
+
 	
-
-
-
-	public boolean isEmpruntable() {
-	        return empruntable;
-	    }
 	 
-	 @Override
-		public String toString() {
-			return "Livre [isbn=" + isbn + ", titre=" + titre + ", anneeParution="
-					+ anneeParution + ", nbPages=" + nbPages + ", theme=" + theme
-					+ ", auteurs=" + auteurs + ", empruntable=" + empruntable + "]";
-		}
+	 
 	
 	
 }

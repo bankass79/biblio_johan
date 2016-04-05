@@ -37,6 +37,30 @@ public class EmpruntEnCours {
 		return "EmpruntEnCours [exemplaire=" + exemplaire + ", utilisateur="
 				+ utilisateur + ", dateEmpunt=" + dateEmprunt + "]";
 	}
+	public Exemplaire getExemplaire() {
+		return exemplaire;
+	}
+	public void setExemplaire(Exemplaire exemplaire) {
+		this.exemplaire = exemplaire;
+	}
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+	public Date getDateEmprunt() {
+		return dateEmprunt;
+	}
+	public void setDateEmprunt(Date dateEmprunt) {
+		this.dateEmprunt = dateEmprunt;
+	}
+	@Override
+	protected void finalize() throws Throwable {
+		// TODO Auto-generated method stub
+		super.finalize();
+		System.out.println("L'emprunt en cours est garbage collecté");
+	}
 	
 	
 	
