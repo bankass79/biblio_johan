@@ -23,17 +23,18 @@ public class TestRetour {
 		System.out.println(ad1.getEmpruntEnCours());
 	
 		System.out.println("On rend exemplaire 2");
-		ex2.setEmpruntEnCours(null);
+		ex2.rendre();
 		System.out.println(ad1.getEmpruntEnCours());
 		if (ex2.getStatus() == Exemplaire.Status.DISPONIBLE) {
 			System.out.println("L'exemplaire 2 est disponible");
 		}
 		
 		System.out.println(EmpruntArchive.getEmpruntsArchives());
-		
+		/*
 		for (int i = 0 ; i < 100000 ; i++) {
 			empruntEnCours = new EmpruntEnCours(ex2, ad1, new Date());
 			ex2.setEmpruntEnCours(null);
 		}
+		*/
 	}
 }

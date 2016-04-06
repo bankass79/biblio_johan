@@ -42,6 +42,9 @@ public class Exemplaire {
 		return empruntEnCours;
 	}
 	
+	public void rendre() {
+		setEmpruntEnCours(null);
+	}
 	
 	public void setEmpruntEnCours(EmpruntEnCours empruntEnCours) {
 		
@@ -50,7 +53,10 @@ public class Exemplaire {
 		}
 		else {
 			this.empruntEnCours.getUtilisateur().retirerEmpruntEnCours(this.empruntEnCours);
-			EmpruntArchive.addEmpruntArchive(new Date(), this.empruntEnCours.getDateEmprunt());
+			EmpruntArchive.addEmpruntArchive(this.empruntEnCours.getExemplaire(), 
+					this.empruntEnCours.getUtilisateur(),
+					new Date(), 
+					this.empruntEnCours.getDateEmprunt());
 			this.status= Status.DISPONIBLE;
 		}
 		this.empruntEnCours = empruntEnCours;

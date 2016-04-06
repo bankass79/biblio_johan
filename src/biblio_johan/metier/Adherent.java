@@ -56,7 +56,11 @@ public class Adherent extends Utilisateur {
 
 	@Override
 	public String toString() {
-		return "Adherent [ntelephone=" + ntelephone + "]";
+		return "Adherent [ntelephone=" + ntelephone + ", idUtilisateur="
+				+ idUtilisateur + ", pwd=" + pwd + ", pseudonyme=" + pseudonyme
+				+ ", nom=" + nom
+				+ ", prenom=" + prenom + ", sexe=" + sexe + ", dateNaissance="
+				+ dateNaissance + "]";
 	}
 	
 	

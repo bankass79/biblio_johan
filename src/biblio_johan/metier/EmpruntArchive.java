@@ -8,13 +8,18 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class EmpruntArchive {
-	private Date dateRestitution;
+	private Exemplaire exemplaire;
+	private Utilisateur utilisateur;
+	private Date dateRestitutionEff;
 	private Date dateEmprunt;
 	static private ArrayList<EmpruntArchive> empruntsArchives;
 	
-	public static void addEmpruntArchive(Date dateRestitution, Date dateEmprunt) {
+	public static void addEmpruntArchive(Exemplaire exemplaire,
+			Utilisateur utilisateur, Date dateRestitution, Date dateEmprunt) {
+
 		empruntsArchives = new ArrayList<>();
-		empruntsArchives.add(new EmpruntArchive(dateRestitution, dateEmprunt));
+		empruntsArchives.add(new EmpruntArchive(exemplaire, utilisateur,
+				dateRestitution, dateEmprunt));
 	}
 	
 	
@@ -29,17 +34,19 @@ public class EmpruntArchive {
 
 
 
-	private EmpruntArchive(Date dateRestitution, Date dateEmprunt) {
-		super();
-		this.dateRestitution = dateRestitution;
+	private EmpruntArchive(Exemplaire exemplaire,
+			Utilisateur utilisateur, Date dateRestitution, Date dateEmprunt) {
+		this.utilisateur = utilisateur;
+		this.exemplaire = exemplaire;
+		this.dateRestitutionEff = dateRestitution;
 		this.dateEmprunt = dateEmprunt;
 		
 	}
 	public Date getDateRestitution() {
-		return dateRestitution;
+		return dateRestitutionEff;
 	}
 	public void setDateRestitution(Date dateRestitution) {
-		this.dateRestitution = dateRestitution;
+		this.dateRestitutionEff = dateRestitution;
 	}
 	public Date getDateEmprunt() {
 		return dateEmprunt;
@@ -49,7 +56,7 @@ public class EmpruntArchive {
 	}
 	 
 	public  String dateRestitutionEff(String date, long days){
-		days = dateRestitution.getTime()- dateEmprunt.getTime();
+		days = dateRestitutionEff.getTime()- dateEmprunt.getTime();
 		SimpleDateFormat sdf= new SimpleDateFormat ("yy-MM-dd");
 		 String result="";
 		 try {
@@ -69,8 +76,39 @@ public class EmpruntArchive {
 	}
 	@Override
 	public String toString() {
-		return "EmpruntArchive [dateRestitution=" + dateRestitution
+		return "EmpruntArchive [exemplaire=" + exemplaire + ", utilisateur="
+				+ utilisateur + ", dateRestitutionEff=" + dateRestitutionEff
 				+ ", dateEmprunt=" + dateEmprunt + "]";
+	}
+
+
+	public Exemplaire getExemplaire() {
+		return exemplaire;
+	}
+
+
+	public void setExemplaire(Exemplaire exemplaire) {
+		this.exemplaire = exemplaire;
+	}
+
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
+	}
+
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+
+	public Date getDateRestitutionEff() {
+		return dateRestitutionEff;
+	}
+
+
+	public void setDateRestitutionEff(Date dateRestitutionEff) {
+		this.dateRestitutionEff = dateRestitutionEff;
 	}
 	
 	

@@ -7,12 +7,10 @@ public abstract class Utilisateur extends Personne {
 	protected 	int idUtilisateur;
 	protected String pwd, pseudonyme;
 	protected ArrayList<EmpruntEnCours> empruntsEnCours;
-	protected ArrayList<EmpruntEnCours> empruntsArchive;
 	
 	public Utilisateur(int idUtilisateur, String pwd, String pseudonyme,
 	                   String nom, String prenom, String sexe, Date dateNaissance) {
 		super(nom, prenom, sexe, dateNaissance);
-		this.empruntsArchive = new ArrayList<>();
 		this.empruntsEnCours = new ArrayList<>();
 		this.idUtilisateur = idUtilisateur;
 		this.pwd = pwd;
@@ -69,30 +67,40 @@ public abstract class Utilisateur extends Personne {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		if (!super.equals(o)) return false;
-
-		Utilisateur that = (Utilisateur) o;
-
-		if (idUtilisateur != that.idUtilisateur) return false;
-		if (pwd != null ? !pwd.equals(that.pwd) : that.pwd != null) return false;
-		if (pseudonyme != null ? !pseudonyme.equals(that.pseudonyme) : that.pseudonyme != null) return false;
-		if (empruntsEnCours != null ? !empruntsEnCours.equals(that.empruntsEnCours) : that.empruntsEnCours != null)
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
 			return false;
-		return empruntsArchive != null ? empruntsArchive.equals(that.empruntsArchive) : that.empruntsArchive == null;
-
+		if (getClass() != obj.getClass())
+			return false;
+		Utilisateur other = (Utilisateur) obj;
+		if (empruntsEnCours == null) {
+			if (other.empruntsEnCours != null)
+				return false;
+		} else if (!empruntsEnCours.equals(other.empruntsEnCours))
+			return false;
+		if (idUtilisateur != other.idUtilisateur)
+			return false;
+		if (pseudonyme == null) {
+			if (other.pseudonyme != null)
+				return false;
+		} else if (!pseudonyme.equals(other.pseudonyme))
+			return false;
+		
+		return true;
 	}
 
 	@Override
 	public int hashCode() {
+		final int prime = 31;
 		int result = super.hashCode();
-		result = 31 * result + idUtilisateur;
-		result = 31 * result + (pwd != null ? pwd.hashCode() : 0);
-		result = 31 * result + (pseudonyme != null ? pseudonyme.hashCode() : 0);
-		result = 31 * result + (empruntsEnCours != null ? empruntsEnCours.hashCode() : 0);
-		result = 31 * result + (empruntsArchive != null ? empruntsArchive.hashCode() : 0);
+		result = prime * result
+				+ ((empruntsEnCours == null) ? 0 : empruntsEnCours.hashCode());
+		result = prime * result + idUtilisateur;
+		result = prime * result
+				+ ((pseudonyme == null) ? 0 : pseudonyme.hashCode());
+		result = prime * result + ((pwd == null) ? 0 : pwd.hashCode());
 		return result;
 	}
 
@@ -100,7 +108,7 @@ public abstract class Utilisateur extends Personne {
 	public String toString() {
 		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", pwd=" + pwd
 				+ ", pseudonyme=" + pseudonyme + ", empruntsEnCours="
-				+ empruntsEnCours + ", empruntsArchive=" + empruntsArchive
+				+ empruntsEnCours
 				+ "]";
 	}
 	
